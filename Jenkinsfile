@@ -38,5 +38,10 @@ pipeline{
                 sh 'mvn package'
             }
         }
+        stage('7.Build docker image'){
+            steps{
+                sh 'docker build -t ragigeo/addressbook:1.0.0 .'
+            }
+        }
     }
 }

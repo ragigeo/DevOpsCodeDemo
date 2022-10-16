@@ -43,5 +43,11 @@ pipeline{
                 sh 'docker build -t ragigeo/addressbook:1.0.0 .'
             }
         }
+        stage('8.Push docker image'){
+            steps{
+                sh 'docker login -u ragigeo -p Vaishali@2015'
+                sh 'docker push ragigeo/addressbook:1.0.0'
+            }
+        }
     }
 }

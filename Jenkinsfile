@@ -49,5 +49,10 @@ pipeline{
                 sh 'docker push ragigeo/addressbook:1.0.0'
             }
         }
+         stage('9.Run container on tomcat server'){
+            steps{
+                sh 'docker run -p 8090:8090 -d ragigeo/addressbook:1.0.0'
+            }
+        }
     }
 }

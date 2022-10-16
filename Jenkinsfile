@@ -51,7 +51,7 @@ pipeline{
         }
          stage('9.Run container on tomcat server'){
             steps{
-                sh 'docker run -p 8090:8090 -d ragigeo/addressbook:1.0.0'
+                sh 'docker container run -p 8090:8090 -d -name addressbook ragigeo/addressbook:1.0.0'
             }
         }
     }

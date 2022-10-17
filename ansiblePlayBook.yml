@@ -5,4 +5,14 @@
   tasks:
   - name: install git
     apt: name=git state=present
+  - name: install docker
+      apt:
+        name: "{{item}}"
+        state: latest
+        update_cache: yes
+      loop:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+    
   

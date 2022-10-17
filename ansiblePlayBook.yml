@@ -3,16 +3,20 @@
   become: true
   become_user: root
   tasks:
-  - name: install git
-    apt: name=git state=present
-  - name: install docker
-      apt:
+  - name: install docker and git
+    yum:
         name: "{{item}}"
-        state: latest
-        update_cache: yes
-      loop:
-        - docker-ce
-        - docker-ce-cli
-        - containerd.io
+        state: present
+    loop:
+        - git
+        - docker
+  - name: start docker in host server
+    service: name=docker state=started
+  - name: to clone the git repo
+    git: repo=https://github.com/ragigeo/DevOpsCodeDemo.git dest=/tmp/getrepo
+  - name: build the docker file
+    command: chdir=/tmp/getrepo docker build -t myansibleimage .
+  - name: run thge image and launch the container
+    command: docker run -d -P myansibleimage
     
   

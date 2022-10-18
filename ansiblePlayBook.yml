@@ -9,7 +9,7 @@
         state: present
     loop:
         - git
-        - docker
+        - docker:20.10
   - name: start docker in host server
     service: name=docker state=started
   - name: to clone the git repo

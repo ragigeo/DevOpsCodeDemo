@@ -17,6 +17,6 @@
   - name: build the docker file
     command: chdir=/tmp/getrepo docker build -t myansibleimage .
   - name: run thge image and launch the container
-    command: docker run -d -P myansibleimage
+    command: docker start -d -P myansibleimage
     
   

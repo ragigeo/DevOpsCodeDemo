@@ -45,7 +45,7 @@ pipeline{
         }
         stage('8.Push docker image'){
             steps{
-                sh 'docker login -u ragigeo -p Vaishali@2015'
+                sh 'docker login -u ragigeo -p <dockerhubpwd>'
                 sh 'docker push ragigeo/addressbook:1.0.0'
             }
         }
